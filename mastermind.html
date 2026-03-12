@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastermind (2010 Web Edition)</title>
+    <link rel="stylesheet" href="mastermind.css">
+</head>
+
+<body>
+
+    <div id="intro-modal">
+        <div class="modal-content">
+            <h2>MASTERMIND</h2>
+            <div class="intro-rules">
+                <p>Welcome, Codebreaker! Your mission is to guess the secret 4-color code.</p>
+                <div class="rule-example">
+                    <div class="example-peg black"></div>
+                    <div class="example-text"><strong>Black Key:</strong> Right color & right position.</div>
+                </div>
+                <div class="rule-example">
+                    <div class="example-peg white"></div>
+                    <div class="example-text"><strong>White Key:</strong> Right color, wrong position.</div>
+                </div>
+                <p style="font-size: 0.9em; color: #FFFFFF; margin-top: 15px;">Colors can be repeated in the secret
+                    code. Good luck!</p>
+            </div>
+            <button class="pulse-button" onclick="closeIntro()">PLAY GAME</button>
+        </div>
+    </div>
+
+    <div id="layout-wrapper">
+        <div id="game-container">
+            <h1>MASTERMIND</h1>
+            
+            <div style="margin-bottom: 20px; text-align: center;">
+                <a href="battleship.html" style="color: #00FF00; text-decoration: none; font-family: 'Comic Sans MS', cursive; font-size: 1.2em; border: 2px outset #555; padding: 5px 10px; background: #333; display: inline-block;">► Play Battleship ◄</a>
+            </div>
+
+            <div id="board">
+                <!-- Rows will be injected by JavaScript -->
+            </div>
+
+            <div class="color-picker">
+                <!-- Red, Blue, Yellow, Green, White, Black -->
+                <div class="picker-peg bg-red" data-color="red" onclick="selectColor('red')" title="Red"></div>
+                <div class="picker-peg bg-blue" data-color="blue" onclick="selectColor('blue')" title="Blue"></div>
+                <div class="picker-peg bg-yellow" data-color="yellow" onclick="selectColor('yellow')" title="Yellow">
+                </div>
+                <div class="picker-peg bg-green" data-color="green" onclick="selectColor('green')" title="Green"></div>
+                <div class="picker-peg bg-white" data-color="white" onclick="selectColor('white')" title="White"></div>
+                <div class="picker-peg bg-black" data-color="black" onclick="selectColor('black')" title="Black"></div>
+            </div>
+
+            <div id="status">Connecting to Server...</div>
+        </div>
+
+        <div id="side-rules-panel">
+            <h2>RULES</h2>
+            <p>Your mission is to guess the secret 4-color code. Colors can be repeated!</p>
+            <p>Fill the active row (from bottom-up) with colors, and click <strong>CHECK</strong>.</p>
+
+            <div class="rule-example">
+                <div class="example-peg black"></div>
+                <div class="example-text"><strong>Black Key:</strong> Right color & position.</div>
+            </div>
+
+            <div class="rule-example">
+                <div class="example-peg white"></div>
+                <div class="example-text"><strong>White Key:</strong> Right color, wrong position.</div>
+            </div>
+
+            <p class="good-luck-text">Good luck, Codebreaker!</p>
+        </div>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+
+</html>

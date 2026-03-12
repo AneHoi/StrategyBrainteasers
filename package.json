@@ -1,0 +1,18 @@
+{
+  "name": "mastermind",
+  "version": "1.0.0",
+  "description": "Mastermind game with TS backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "tsx server.ts"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

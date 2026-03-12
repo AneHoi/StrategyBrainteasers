@@ -1,0 +1,358 @@
+body {
+    background-color: #000000;
+    /* Simulated "stars.gif" background tiled effect */
+    background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 2px),
+        radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 1px),
+        radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 2px);
+    background-size: 50px 50px, 40px 40px, 30px 30px;
+    background-position: 0 0, 20px 20px, 40px 10px;
+    font-family: "Comic Sans MS", "Times New Roman", Times, serif;
+    color: #00FF00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+#layout-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    max-width: 95vw;
+}
+
+#side-rules-panel {
+    background-color: #000080;
+    border: 5px outset #C0C0C0;
+    padding: 10px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #FFFFFF;
+}
+
+#side-rules-panel h2 {
+    color: #FFFF00;
+    margin: 0;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 2px solid #FFFFFF;
+    padding-bottom: 5px;
+    text-decoration: underline;
+}
+
+#side-rules-panel p {
+    font-size: 0.9em;
+    line-height: 1.2;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+@media (max-width: 800px) {
+    #layout-wrapper {
+        flex-direction: column;
+    }
+
+    #side-rules-panel {
+        width: 100%;
+        max-width: 400px;
+        padding: 5px 10px;
+    }
+}
+
+#game-container {
+    background-color: #C0C0C0;
+    border: 5px inset #FFFFFF;
+    padding: 10px;
+    width: 400px;
+    max-width: 95vw;
+    height: 95vh;
+    max-height: 900px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+}
+
+h1 {
+    text-align: center;
+    margin: 0 0 1vh 0;
+    color: #FF0000;
+    font-size: clamp(20px, 4vh, 32px);
+    flex-shrink: 0;
+    font-family: inherit;
+}
+
+#board {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1;
+    min-height: 0;
+    background-color: #000000;
+    border: 3px inset #808080;
+    padding: 5px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #808080;
+    padding: 0.5vh 5px;
+    border: 2px outset #C0C0C0;
+    height: clamp(25px, 6vh, 50px);
+}
+
+.row.active {
+    background-color: #FFFF00;
+    border: 2px inset #C0C0C0;
+}
+
+.holes {
+    display: flex;
+    gap: clamp(5px, 1.5vw, 10px);
+}
+
+.hole {
+    width: clamp(20px, 4.5vh, 35px);
+    height: clamp(20px, 4.5vh, 35px);
+    border-radius: 50%;
+    background-color: #000000;
+    border: 2px inset #808080;
+    cursor: pointer;
+    position: relative;
+}
+
+.hole.filled {
+    border: 2px outset #FFFFFF;
+}
+
+/* Key Pegs Grid */
+.key-pegs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    width: clamp(16px, 3.5vh, 30px);
+    height: clamp(16px, 3.5vh, 30px);
+    background-color: #000000;
+    border: 2px inset #808080;
+    padding: 2px;
+}
+
+.key-hole {
+    width: 90%;
+    height: 90%;
+    justify-self: center;
+    align-self: center;
+    border-radius: 50%;
+    background-color: #333333;
+    border: 1px inset #808080;
+}
+
+/* Color Picker UI */
+.color-picker {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #808080;
+    padding: 1vh 10px;
+    margin-top: 1.5vh;
+    border: 3px outset #C0C0C0;
+    flex-shrink: 0;
+}
+
+.picker-peg {
+    width: clamp(25px, 5vh, 40px);
+    height: clamp(25px, 5vh, 40px);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px outset #FFFFFF;
+}
+
+.picker-peg.selected {
+    border: 4px dotted #00FF00;
+}
+
+/* Background colors for game pegs */
+.bg-red {
+    background-color: #FF0000;
+}
+
+.bg-blue {
+    background-color: #0000FF;
+}
+
+.bg-yellow {
+    background-color: #FFFF00;
+}
+
+.bg-green {
+    background-color: #00FF00;
+}
+
+.bg-white {
+    background-color: #FFFFFF;
+}
+
+.bg-black {
+    background-color: #000000;
+}
+
+/* Filled Key Pegs */
+.key-black {
+    background-color: #000000;
+    border: 1px outset #FFFFFF;
+}
+
+.key-white {
+    background-color: #FFFFFF;
+    border: 1px outset #808080;
+}
+
+/* Play / Submit Button */
+button.check-btn {
+    background-color: #C0C0C0;
+    border: 3px outset #FFFFFF;
+    color: #000000;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(9px, 1.5vh, 11px);
+    padding: clamp(3px, 0.8vh, 6px) clamp(6px, 1.5vw, 12px);
+    cursor: pointer;
+    visibility: hidden;
+}
+
+button.check-btn:active {
+    border: 3px inset #FFFFFF;
+    background-color: #808080;
+}
+
+.row.active button.check-btn {
+    visibility: visible;
+}
+
+/* Status Text and rules text */
+#status {
+    text-align: center;
+    font-size: clamp(14px, 2.2vh, 18px);
+    font-weight: bold;
+    margin-top: 1vh;
+    min-height: clamp(20px, 3vh, 25px);
+    color: #FF0000;
+    background-color: #000000;
+    border: 2px inset #FFFFFF;
+    flex-shrink: 0;
+}
+
+/* Modal Overlay Styling */
+#intro-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#intro-modal.hide {
+    display: none;
+}
+
+.modal-content {
+    background-color: #000080;
+    border: 5px outset #C0C0C0;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.modal-content h2 {
+    color: #FFFF00;
+    margin-top: 0;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-decoration: blink;
+}
+
+.intro-rules {
+    text-align: left;
+    background-color: #000000;
+    padding: 15px;
+    border: 3px inset #808080;
+    margin-bottom: 20px;
+}
+
+.intro-rules p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    line-height: 1.2;
+    color: #00FF00;
+}
+
+.rule-example {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+    background-color: #000000;
+    border: 2px inset #808080;
+    padding: 5px;
+}
+
+.example-peg {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.example-peg.black {
+    background-color: #000000;
+    border: 1px outset #FFFFFF;
+}
+
+.example-peg.white {
+    background-color: #FFFFFF;
+    border: 1px outset #808080;
+}
+
+.example-text {
+    font-size: 0.85em;
+    color: #00FF00;
+}
+
+.good-luck-text {
+    font-size: 0.8em;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: auto;
+}
+
+.pulse-button {
+    background-color: #FF0000;
+    border: 4px outset #FF9999;
+    color: #FFFF00;
+    font-family: "Comic Sans MS", "Times New Roman", Times, serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: blink;
+}
+
+.pulse-button:active {
+    border: 4px inset #FF9999;
+}

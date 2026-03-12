@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship</title>
+    <link rel="stylesheet" href="battleship.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="mastermind.html" class="nav-link">← Mastermind</a>
+        <h1>BATTLESHIP</h1>
+    </div>
+
+    <div class="game-container">
+        <div id="setup-panel" class="panel">
+            <h2>Fleet Radar Command</h2>
+            <div id="fleet-container">
+                <!-- Ships will be listed here for placement -->
+            </div>
+            <button id="rotate-btn" class="action-btn">Rotate Ship (Horizontal)</button>
+            <button id="start-btn" class="action-btn cta-btn" disabled>Start Battle</button>
+            <p id="setup-instructions">Select a ship to place on your grid.</p>
+        </div>
+        
+        <div id="battle-panel" class="panel hidden">
+            <h2 id="turn-indicator">Your Turn. Awaiting Orders.</h2>
+            <div class="status-summary">
+                <div class="status-block">
+                    <h3>Your Fleet</h3>
+                    <div id="player-fleet-status">5 / 5 Operational</div>
+                </div>
+                <div class="status-block">
+                    <h3>Enemy Fleet</h3>
+                    <div id="enemy-fleet-status">5 / 5 Operational</div>
+                </div>
+            </div>
+            <button id="restart-btn" class="action-btn cta-btn hidden">Play Again</button>
+        </div>
+
+        <div class="grids-wrapper">
+            <div class="grid-section">
+                <h3>Primary Grid (Your Fleet)</h3>
+                <div id="primary-grid" class="grid"></div>
+            </div>
+            <div class="grid-section">
+                <h3>Target Grid (Enemy Sector)</h3>
+                <div id="target-grid" class="grid target-locked"></div>
+            </div>
+        </div>
+    </div>
+    <script src="battleship.js"></script>
+</body>
+</html>
