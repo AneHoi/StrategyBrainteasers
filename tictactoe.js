@@ -114,6 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreOElement.textContent = scores.O;
     }
 
+    function trackGame() {
+        fetch('/api/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ gameName: 'Tic Tac Toe' })
+        }).catch(err => console.error('Failed to track game:', err));
+    }
+
     function restartGame() {
         currentPlayer = 'X';
         gameState = Array(9).fill('');
@@ -128,6 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.textContent = '';
             cell.className = 'cell'; // Reset classes
         });
+
+        trackGame();
     }
 
     restartBtn.addEventListener('click', restartGame);
@@ -135,4 +145,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start UI
     initBoard();
     updateTurnIndicator();
+    trackGame();
 });

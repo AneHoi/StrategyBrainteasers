@@ -196,6 +196,14 @@ function placeComputerShips() {
 document.getElementById('start-btn').addEventListener('click', () => {
     placeComputerShips();
     gameState = 'PLAYER_TURN';
+    
+    // Track game start
+    fetch('/api/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ gameName: 'Battleship' })
+    }).catch(err => console.error('Failed to track game:', err));
+
     document.getElementById('setup-panel').classList.add('hidden');
     document.getElementById('battle-panel').classList.remove('hidden');
     document.getElementById('target-grid').classList.add('active');

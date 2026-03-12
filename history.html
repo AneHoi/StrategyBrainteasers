@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game History</title>
+    <link rel="stylesheet" href="history.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="nav-links-left">
+            <a href="mastermind.html" class="nav-link">← Mastermind</a>
+            <a href="battleship.html" class="nav-link">Battleship</a>
+        </div>
+        <h1>GAME HISTORY</h1>
+        <div class="nav-links-right">
+            <a href="tictactoe.html" class="nav-link">Tic Tac Toe →</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="history-panel">
+            <h2>Recent Sessions</h2>
+            <div class="table-container">
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Game Played</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <tr>
+                            <td colspan="3" class="loading">Loading history data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="history.js"></script>
+</body>
+</html>

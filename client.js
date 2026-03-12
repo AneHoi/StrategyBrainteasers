@@ -10,6 +10,13 @@ async function startGame() {
         const data = await res.json();
         gameId = data.gameId;
 
+        // Track game start
+        fetch('/api/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ gameName: 'Mastermind' })
+        }).catch(err => console.error('Failed to track game:', err));
+
         currentRow = 0;
         currentGuess = [];
         selectedColor = COLORS[0];
